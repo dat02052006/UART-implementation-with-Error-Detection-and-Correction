@@ -1,0 +1,29 @@
+D:/CE213/final_project/rx_fsm.v {1 {vlog -work work D:/CE213/final_project/rx_fsm.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module rx_fsm
+
+Top level modules:
+	rx_fsm
+
+} {} {}} D:/CE213/final_project/oversampling_filter.v {1 {vlog -work work D:/CE213/final_project/oversampling_filter.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module oversampling_filer
+
+Top level modules:
+	oversampling_filer
+
+} {} {}} D:/CE213/final_project/transmitter.v {1 {vlog -work work D:/CE213/final_project/transmitter.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module Emitter
+
+Top level modules:
+	Emitter
+
+} {} {}} D:/CE213/final_project/hamming_decoder.v {1 {vlog -work work D:/CE213/final_project/hamming_decoder.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module hamming_decoder
+
+Top level modules:
+	hamming_decoder
+
+} {} {}}
