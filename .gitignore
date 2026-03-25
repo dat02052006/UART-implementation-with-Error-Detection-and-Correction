@@ -1,0 +1,35 @@
+# ==========================================
+# File .gitignore cho dự án Verilog/VHDL
+# ==========================================
+
+# --- 1. ModelSim / QuestaSim ---
+work/
+transcript
+*.wlf
+*.vstf
+wlft*
+modelsim.ini
+
+# --- 2. Quartus (Phần mềm tổng hợp mạch) ---
+db/
+incremental_db/
+output_files/
+simulation/
+timing/
+*.qws
+*.pof
+*.sof
+*.rpt
+*.summary
+*.smsg
+*.jdi
+*.pin
+*.done
+*.sld
+
+# --- 3. Các file tạm thời của hệ điều hành ---
+.DS_Store
+Thumbs.db
+*.bak
+*.orig
+*~
