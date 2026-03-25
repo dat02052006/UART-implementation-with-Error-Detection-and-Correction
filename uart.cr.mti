@@ -1,0 +1,29 @@
+D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/oversampling_filter.v {1 {vlog -work work D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/oversampling_filter.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module oversampling_filer
+
+Top level modules:
+	oversampling_filer
+
+} {} {}} D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v {1 {vlog -work work D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module Emitter
+
+Top level modules:
+	Emitter
+
+} {} {}} D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v {1 {vlog -work work D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module hamming_decoder
+
+Top level modules:
+	hamming_decoder
+
+} {} {}} D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/rx_fsm.v {1 {vlog -work work D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/rx_fsm.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module rx_fsm
+
+Top level modules:
+	rx_fsm
+
+} {} {}}
