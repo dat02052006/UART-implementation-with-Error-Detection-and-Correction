@@ -1,4 +1,4 @@
-module Emitter (
+module transmitter (
   input [7:0] d,
   output [12:0] encoded_data
 );
