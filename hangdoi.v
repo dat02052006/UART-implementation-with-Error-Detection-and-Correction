@@ -4,7 +4,7 @@ module queue #(
   input wire clk,rs,w_en,r_en,
   input wire [data_width-1:0] in,
   output reg [data_width-1:0] out,
-  output reg full,empty
+  output full,empty
 );
   localparam depth = 1 << addr_width;
   reg [data_width-1:0] ram [0:depth-1];
@@ -16,16 +16,16 @@ always @(posedge clk)
     if (w_en && !full) 
     ram[w_ptr] <= in;
   end
-always @(posedge clk or negedge rs)
+always @(posedge clk or posedge rs)
   begin
-    if (!rs) 
+    if (rs) 
        out <= {data_width{1'b0}};
     else if (r_en && !empty)
             out <= ram[r_ptr];
   end
-always @(posedge clk or negedge rs) 
+always @(posedge clk or posedge rs) 
   begin
-    if (!rs) 
+    if (rs) 
       begin
         w_ptr <= 0;
         r_ptr <= 0;
@@ -49,11 +49,10 @@ always @(posedge clk or negedge rs)
               w_ptr <= w_ptr+1;
               r_ptr <= r_ptr+1;
             end
+            default: ;
         endcase
        end
    end
-always @(*) begin
-        empty = (!count)?1:0;
-        full = (count == depth)?1:0;
-    end
+  assign empty = (!count)?1:0;
+  assign full = (count == depth)?1:0;
 endmodule

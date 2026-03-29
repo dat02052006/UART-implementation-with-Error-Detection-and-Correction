@@ -5,12 +5,26 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 Top level modules:
 	oversampling_filer
 
-} {} {}} D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v {1 {vlog -work work D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v
+} {} {}} D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/receiver.v {1 {vlog -work work D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/receiver.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module Emitter
+-- Compiling module receiver
 
 Top level modules:
-	Emitter
+	receiver
+
+} {} {}} D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v {1 {vlog -work work D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module transmitter
+
+Top level modules:
+	transmitter
+
+} {} {}} D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hangdoi.v {1 {vlog -work work D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hangdoi.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module queue
+
+Top level modules:
+	queue
 
 } {} {}} D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v {1 {vlog -work work D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012

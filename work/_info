@@ -4,98 +4,136 @@ K3
 cModel Technology
 Z0 dD:\CE213\modelsim_temp
 vEmitter
+Z1 ILG9]LQ9UO9S<3zG[D1=VH3
+Z2 V[K_FfFT205;g1SX[8gENA0
+Z3 dD:\CE213\final_project\UART-implementation-with-Error-Detection-and-Correction
+Z4 w1774269469
+Z5 8D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v
+Z6 FD:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v
+L0 1
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 o-work work -O0
+Z9 n@emitter
+Z10 !s100 S>8ZRVRVedRNY1l>LnWUX3
+Z11 !s108 1774447632.136000
+Z12 !s107 D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v|
+Z13 !s90 -reportprogress|300|-work|work|D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v|
 !i10b 1
-!s100 S>8ZRVRVedRNY1l>LnWUX3
-ILG9]LQ9UO9S<3zG[D1=VH3
-Z1 V[K_FfFT205;g1SX[8gENA0
-Z2 dD:\CE213\final_project\UART-implementation-with-Error-Detection-and-Correction
-Z3 w1774269469
-8D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v
-FD:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v
-L0 1
-Z4 OV;L;10.1d;51
-r1
 !s85 0
-31
-!s108 1774447632.136000
-!s107 D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v|
-!s90 -reportprogress|300|-work|work|D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/transmitter.v|
 !s101 -O0
-Z5 o-work work -O0
-Z6 n@emitter
 vhamming_decoder
-Z7 IblZXPhBAgCI?NN_nC_mV:0
-Z8 VXMY2W5Q32J5GoiU07153e1
-R2
-Z9 w1774276865
-Z10 8D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v
-Z11 FD:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v
+Z14 !s100 YW:Ck^b2TSgG3W?ilVcFJ0
+Z15 IblZXPhBAgCI?NN_nC_mV:0
+Z16 VXMY2W5Q32J5GoiU07153e1
+R3
+Z17 w1774276865
+Z18 8D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v
+Z19 FD:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v
 L0 1
-R4
+R7
 r1
 31
-R5
-Z12 !s100 YW:Ck^b2TSgG3W?ilVcFJ0
-Z13 !s108 1774447631.933000
-Z14 !s107 D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v|
-Z15 !s90 -reportprogress|300|-work|work|D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v|
+Z20 !s90 -reportprogress|300|-work|work|D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v|
+R8
+Z21 !s108 1774753048.024000
+Z22 !s107 D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hamming_decoder.v|
 !i10b 1
 !s85 0
 !s101 -O0
 voversampling_filer
-Z16 INnnOIgOQoTeG4Qk>>IL_j1
-Z17 Vhf:J^]_U>`VDFLZf1[f_42
-R2
-Z18 w1774277188
-Z19 8D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/oversampling_filter.v
-Z20 FD:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/oversampling_filter.v
+Z23 !s100 jVj6gZ=Tf;LVH9kdoKX1G3
+Z24 INnnOIgOQoTeG4Qk>>IL_j1
+Z25 Vhf:J^]_U>`VDFLZf1[f_42
+R3
+Z26 w1774277188
+Z27 8D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/oversampling_filter.v
+Z28 FD:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/oversampling_filter.v
 L0 1
-R4
+R7
 r1
 31
-R5
-Z21 !s100 jVj6gZ=Tf;LVH9kdoKX1G3
-Z22 !s108 1774447631.996000
-Z23 !s107 D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/oversampling_filter.v|
-Z24 !s90 -reportprogress|300|-work|work|D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/oversampling_filter.v|
+Z29 !s90 -reportprogress|300|-work|work|D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/oversampling_filter.v|
+R8
+Z30 !s108 1774753048.102000
+Z31 !s107 D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/oversampling_filter.v|
 !i10b 1
 !s85 0
+!s101 -O0
+vqueue
+Z32 I:U0j6J7SQRX@eM;WJfP8C2
+Z33 V<S?io0Z?bYnbEB[@Yl6PO1
+R3
+Z34 w1774753041
+Z35 8D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hangdoi.v
+Z36 FD:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hangdoi.v
+L0 1
+R7
+r1
+31
+Z37 !s90 -reportprogress|300|-work|work|D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hangdoi.v|
+R8
+!i10b 1
+Z38 !s100 7?GZE9T_SM2@?SX?54_Tb3
+!s85 0
+Z39 !s108 1774753048.305000
+Z40 !s107 D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/hangdoi.v|
 !s101 -O0
 vreceiver
-Z25 I9ab2Rj7o2l=4AP@^l?TQ]1
-Z26 VkJ261O>Zhl[^@GB@IJ1l53
-Z27 dD:\CE213\final_project
-Z28 w1774274317
-Z29 8D:/CE213/final_project/receiver.v
-Z30 FD:/CE213/final_project/receiver.v
+!i10b 1
+Z41 !s100 YUGI9XGM[dlaA13gNREdT0
+Z42 IG6H@]bX_@DcoU2]:UWU4L3
+Z43 V3a:JGjSbZgz0zQd@IYB811
+R3
+Z44 w1774752646
+Z45 8D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/receiver.v
+Z46 FD:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/receiver.v
 L0 1
-R4
+R7
+r1
+!s85 0
+31
+!s108 1774753048.384000
+!s107 D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/receiver.v|
+Z47 !s90 -reportprogress|300|-work|work|D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/receiver.v|
+!s101 -O0
+R8
+vrx_fsm
+Z48 !s100 z:z8Db16Tmd3W:4XPQPfG3
+Z49 I^fd9nL26n[3NkK=;TS:f62
+Z50 VkaE9V]8MQdO>YKkTYQJWz1
+R3
+Z51 w1774444669
+Z52 8D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/rx_fsm.v
+Z53 FD:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/rx_fsm.v
+L0 1
+R7
 r1
 31
-R5
-Z31 !s100 OJgkRi38QM6OH]e[>=G[g0
-Z32 !s108 1774274325.222000
-Z33 !s107 D:/CE213/final_project/receiver.v|
-Z34 !s90 -reportprogress|300|-work|work|D:/CE213/final_project/receiver.v|
+Z54 !s90 -reportprogress|300|-work|work|D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/rx_fsm.v|
+R8
+Z55 !s108 1774753048.165000
+Z56 !s107 D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/rx_fsm.v|
 !i10b 1
 !s85 0
 !s101 -O0
-vrx_fsm
-Z35 I^fd9nL26n[3NkK=;TS:f62
-Z36 VkaE9V]8MQdO>YKkTYQJWz1
-R2
-Z37 w1774444669
-Z38 8D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/rx_fsm.v
-Z39 FD:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/rx_fsm.v
+vtransmitter
+Z57 !s100 F@e=AldcnzZ2@g2`=Gc2a0
+Z58 I:I3fMzXb?jgz^ZeJ_V[100
+Z59 V]VV;WQ2ed5[7PCBii0V:81
+R3
+Z60 w1774752020
+R5
+R6
 L0 1
-R4
+R7
 r1
 31
-R5
+R13
+R8
+Z61 !s108 1774753048.227000
+R12
 !i10b 1
-Z40 !s100 z:z8Db16Tmd3W:4XPQPfG3
 !s85 0
-Z41 !s108 1774447632.074000
-Z42 !s107 D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/rx_fsm.v|
-Z43 !s90 -reportprogress|300|-work|work|D:/CE213/final_project/UART-implementation-with-Error-Detection-and-Correction/rx_fsm.v|
 !s101 -O0
