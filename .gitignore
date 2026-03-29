@@ -5,6 +5,8 @@
 # --- 1. ModelSim / QuestaSim ---
 work/
 transcript
+*.mpf
+*.mti
 *.wlf
 *.vstf
 wlft*
