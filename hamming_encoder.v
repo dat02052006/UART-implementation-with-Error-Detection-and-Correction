@@ -1,4 +1,4 @@
-module transmitter (
+module hamming_encoder (
   input [7:0] d,
   output [12:0] encoded_data
 );
