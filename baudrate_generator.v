@@ -9,7 +9,7 @@ module baudrate_generator (
       clk_16x <= 1'b0;
     end
     else begin
-      if (counter <= 8'd162) begin
+      if (counter == 8'd162) begin
         counter <= 8'd0;
         clk_16x <= ~clk_16x;
       end

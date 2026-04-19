@@ -53,4 +53,5 @@ module tx_fsm (
       endcase
     end
   end 
+  assign done = (state == stop && tick_counter == 4'd15);
 endmodule

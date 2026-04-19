@@ -1,29 +1,30 @@
 module uart_top (
-  input clk_16x, reset, 
-  input [7:0] tx_in,
-  input tx_en,
-  output tx_full,
-  output [7:0] rx_out,
-  input rx_en,
-  output rx_empty, rx_sec, rx_dec,
-  output tx_out,
-  input rx_in
+  input clk, reset,
+  input [7:0] send_data,
+  input send,
+  output [7:0] receive_data,
+  input rx_pin,
+  output tx_pin,
+  output rx_sec, rx_dec,
+  output tx_full
 );
-  transmitter inst0 (
-    .clk_16x(clk_16x),
+  wire clk_16x;
+  baudrate_generator inst0 (
+    .clk(clk),
     .reset(reset),
-    .w_en(tx_en),
-    .data_in(tx_in),
-    .data_out(tx_out),
-    .full(tx_full)
+    .clk_16x(clk_16x)
   );
-  receiver inst1 (
+  tx_rx inst1 (
     .clk_16x(clk_16x),
     .reset(reset),
-    .data_in(rx_in),
-    .data_out(rx_out),
-    .ready(rx_empty),
-    .error_sec(rx_sec),
-    .error_dec(rx_dec)
+    .tx_in(send_data),
+    .tx_en(send),
+    .rx_en(1'b1),
+    .rx_out(receive_data),
+    .tx_out(tx_pin),
+    .rx_in(rx_pin),
+    .tx_full(tx_full),
+    .rx_sec(rx_sec),
+    .rx_dec(rx_dec)
   );
 endmodule

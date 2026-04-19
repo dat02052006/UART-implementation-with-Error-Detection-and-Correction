@@ -5,7 +5,7 @@ module rx_fsm (
 );
   reg [3:0] tick_counter, bit_counter;
   wire voted_bit;
-  oversampling inst0 (
+  oversampling_filter inst0 (
     .clk_16x(clk_16x),
     .reset(reset),
     .data_in(data_in),
