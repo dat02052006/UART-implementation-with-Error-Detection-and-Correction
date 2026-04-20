@@ -1,4 +1,4 @@
-module oversampling_filer (
+module oversampling_filter (
   input clk_16x, data_in, reset,
   input wire [3:0] tick,
   output voted_bit 

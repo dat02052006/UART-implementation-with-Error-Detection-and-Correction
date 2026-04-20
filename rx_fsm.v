@@ -15,15 +15,11 @@ module rx_fsm (
   parameter idle=2'b00, start=2'b01, data=2'b10, stop=2'b11;
   reg [1:0] state, next_state;
   reg [12:0] shift_reg;
-  always @(posedge clk_16x or posedge reset) begin
-    if (reset) shift_reg <= 13'd0;
-    else if (state == data && tick_counter == 4'd15) shift_reg <= {voted_bit, shift_reg[12:1]};
-  end
   always @(*) begin
     case (state)
       idle: next_state = (!data_in) ? start : idle;
       start: begin
-        if (tick_counter == 4'd7) next_state = (!voted_bit) ? data : idle;
+        if (tick_counter == 4'd7) next_state = (!data_in) ? data : idle;
         else next_state = start;
       end
       data: begin
@@ -33,19 +29,33 @@ module rx_fsm (
       stop: next_state = (tick_counter == 4'd15) ? idle : stop;
     endcase
   end
-  always @(posedge clk_16x) begin
+  always @(posedge clk_16x or posedge reset) begin
     if (reset) begin
       state <= idle;
       tick_counter <= 4'd0;
       bit_counter <= 4'd0;
+      shift_reg <= 13'd0;
     end
     else begin
       state <= next_state;
-      tick_counter <= (state == idle) ? 4'd0 : tick_counter + 1;
-      if (state == idle) bit_counter <= 4'd0;
-      else if (state == data && tick_counter == 4'd15) bit_counter <= bit_counter + 1;
+      case (state) 
+        idle: begin
+          tick_counter <= 4'd0;
+          bit_counter <= 4'b0;
+        end
+        start: tick_counter <= (tick_counter == 4'd7)? 4'd0 : tick_counter + 1;
+        data: begin
+          if (tick_counter == 4'd15) begin
+            shift_reg <= {voted_bit, shift_reg[12:1]};
+            bit_counter <= bit_counter + 1;
+            tick_counter <= 4'd0;
+          end
+          else tick_counter <= tick_counter + 1;
+        end
+        stop: tick_counter <= (tick_counter == 4'd15) ? 4'd0 : tick_counter + 1;
+      endcase
     end
   end
-  assign ready = (state == stop) ? 1 : 0;
+  assign ready = (state == stop && tick_counter == 4'd15) ? 1'b1 : 1'b0;
   assign rx_frame = shift_reg;
 endmodule
