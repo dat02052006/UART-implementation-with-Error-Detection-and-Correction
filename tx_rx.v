@@ -5,7 +5,7 @@ module tx_rx (
   output tx_full,
   output [7:0] rx_out,
   input rx_en,
-  output rx_empty, rx_full, rx_sec, rx_dec,
+  output rx_empty, rx_full, rx_sec, rx_ded,
   output tx_out,
   input rx_in
 );
@@ -23,7 +23,7 @@ module tx_rx (
     .data_in(rx_in),
     .data_out(rx_out),
     .error_sec(rx_sec),
-    .error_dec(rx_dec),
+    .error_ded(rx_ded),
     .r_en(rx_en),
     .empty(rx_empty),
     .full(rx_full)

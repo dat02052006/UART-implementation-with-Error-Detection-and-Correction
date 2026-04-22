@@ -6,11 +6,21 @@ module transmitter (
   wire empty, done;
   wire [7:0] fifo_out;
   wire [12:0] encoder_out;
+  reg tx_ready;
+  always @(posedge clk_16x or posedge reset) begin
+    if (reset) 
+      tx_ready <= 1'b0;
+    else if (done) 
+      tx_ready <= 1'b0; 
+    else if (!empty) 
+      tx_ready <= 1'b1; 
+  end
+  wire fifo_read = (!empty) && (!tx_ready);
   queue inst0 (
     .clk(clk_16x), 
     .rs(reset),
     .w_en(w_en), 
-    .r_en(done), 
+    .r_en(fifo_read), 
     .in(data_in), 
     .out(fifo_out), 
     .full(full), 
@@ -23,7 +33,7 @@ module transmitter (
   tx_fsm inst2 (
     .clk_16x(clk_16x),
     .reset(reset),
-    .tx_start(~empty),
+    .tx_start(tx_ready),
     .data_in(encoder_out),
     .data_out(data_out),
     .done(done)

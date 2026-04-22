@@ -1,11 +1,13 @@
 module receiver (
   input clk_16x, reset, data_in, r_en,
-  output error_sec, error_dec, empty, full,
+  output error_sec, error_ded, empty, full,
   output [7:0] data_out
 );
   wire [12:0] rx_frame;
   wire rx_ready;
   wire [7:0] encoded;
+  wire raw_sec, raw_ded;
+  reg reg_sec, reg_ded;
   rx_fsm inst0 (
     .clk_16x(clk_16x),
     .reset(reset),
@@ -16,8 +18,8 @@ module receiver (
   hamming_decoder inst1 (
     .data_in(rx_frame),
     .data_out(encoded),
-    .error_sec(error_sec),
-    .error_dec(error_dec)
+    .error_sec(raw_sec),
+    .error_ded(raw_ded)
   );
   queue inst2 (
     .clk(clk_16x),
@@ -29,4 +31,16 @@ module receiver (
     .full(full),
     .empty(empty)
   );
+  always @(posedge clk_16x or posedge reset) begin
+    if (reset) begin
+      reg_sec <= 1'b0;
+      reg_ded <= 1'b0;
+    end
+    else if (rx_ready) begin
+      reg_sec <= raw_sec;
+      reg_ded <= raw_ded;
+    end
+  end
+  assign error_sec = reg_sec;
+  assign error_ded = reg_ded;
 endmodule

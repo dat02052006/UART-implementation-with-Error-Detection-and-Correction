@@ -5,7 +5,7 @@ module uart_top (
   output [7:0] receive_data,
   input rx_pin,
   output tx_pin,
-  output rx_sec, rx_dec,
+  output rx_sec, rx_ded,
   output tx_full, rx_full
 );
   wire clk_16x;
@@ -26,6 +26,6 @@ module uart_top (
     .tx_full(tx_full),
     .rx_full(rx_full),
     .rx_sec(rx_sec),
-    .rx_dec(rx_dec)
+    .rx_ded(rx_ded)
   );
 endmodule

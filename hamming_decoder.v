@@ -1,7 +1,7 @@
 module hamming_decoder (
   input [12:0] data_in,
   output reg [7:0] data_out,
-  output error_sec, error_dec
+  output error_sec, error_ded
 );
   wire [3:0] s;
   wire s_total;
@@ -27,5 +27,5 @@ module hamming_decoder (
     endcase
   end
   assign error_sec = (s != 4'd0) && (s_total == 1'b1);
-  assign error_dec = (s != 4'd0) && (s_total == 1'b0);
+  assign error_ded = (s != 4'd0) && (s_total == 1'b0);
 endmodule
