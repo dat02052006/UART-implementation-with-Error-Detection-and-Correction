@@ -8,7 +8,7 @@ module uart_top_tb ();
   wire rx_sec, rx_ded, tx_full, rx_full;
   wire rx_pin;
   
-  assign rx_pin = tx_pin; // Loopback
+  assign rx_pin = tx_pin; 
   
   uart_top uut (
     .clk(clk),
@@ -26,7 +26,7 @@ module uart_top_tb ();
 
   initial begin
     clk = 1'b0;
-    forever #10 clk = ~clk; // 50MHz
+    forever #10 clk = ~clk; 
   end
 
   task send_byte;
@@ -34,10 +34,7 @@ module uart_top_tb ();
     begin
       send_data = data;
       send = 1'b1;
-      // Ch? s??n lên c?a chính clk_16x bên trong b? uut ?? ??ng b? chính xác
       @(posedge uut.clk_16x);
-      
-      // Delay thêm 1 chút (ví d? 10ns) ?? tránh l?i hold-time violation trong mô ph?ng
       #10; 
       
       send = 1'b0;
@@ -47,7 +44,10 @@ module uart_top_tb ();
   task check;
     input [7:0] expected;
     begin
-      #300000; // T?ng delay lên 5ms ?? ??m b?o truy?n xong m?i Baud rate thông d?ng
+      @(posedge uut.inst1.inst1.rx_ready);
+      @(posedge uut.clk_16x);
+      @(posedge uut.clk_16x);
+      #10;
       if (receive_data == expected) 
         $display ("PASS, sent: %h, got %h", expected, receive_data);
       else 
@@ -62,7 +62,7 @@ module uart_top_tb ();
     
     #200;
     reset = 1'b0;
-    #200; // ??i m?t chút sau reset r?i m?i g?i
+    #200; 
     
     send_byte (8'haa);
     check (8'haa);
@@ -77,12 +77,23 @@ module uart_top_tb ();
     send_byte (8'h11);
     send_byte (8'h22);
     send_byte (8'h33);
-    
-    // ??i 15ms cho 3 byte truy?n xong (n?u test baud rate ch?m)
-    #1000000; 
-    
+    send_byte (8'h11);
+    send_byte (8'h22);
+    send_byte (8'h33);
+    send_byte (8'h11);
+    send_byte (8'h22);
+    send_byte (8'h33);
+    send_byte (8'h11);
+    send_byte (8'h22);
+    send_byte (8'h33);
+    send_byte (8'h11);
+    send_byte (8'h22);
+    send_byte (8'h33);
+    send_byte (8'h11);
+    send_byte (8'h22);
+    send_byte (8'h33);
     if (tx_full) $display ("FIFO tx_full flag works");
-    
+    #1000000; 
     $finish;
   end
 endmodule
