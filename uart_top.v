@@ -6,7 +6,7 @@ module uart_top (
   input rx_pin,
   output tx_pin,
   output rx_sec, rx_dec,
-  output tx_full
+  output tx_full, rx_full
 );
   wire clk_16x;
   baudrate_generator inst0 (
@@ -24,6 +24,7 @@ module uart_top (
     .tx_out(tx_pin),
     .rx_in(rx_pin),
     .tx_full(tx_full),
+    .rx_full(rx_full),
     .rx_sec(rx_sec),
     .rx_dec(rx_dec)
   );

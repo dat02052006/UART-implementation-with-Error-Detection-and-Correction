@@ -14,7 +14,7 @@ module receiver (
     .ready(rx_ready)
   );
   hamming_decoder inst1 (
-    .data_in(wire1),
+    .data_in(rx_frame),
     .data_out(encoded),
     .error_sec(error_sec),
     .error_dec(error_dec)
