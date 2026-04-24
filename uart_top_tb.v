@@ -5,7 +5,7 @@ module uart_top_tb ();
   reg [7:0] send_data;
   wire [7:0] receive_data;
   wire tx_pin;
-  wire rx_sec, rx_ded, tx_full, rx_full;
+  wire rx_sec, rx_ded, tx_full, rx_full, tx_empty, rx_empty;
   wire rx_pin;
   
   assign rx_pin = tx_pin; 
@@ -21,7 +21,9 @@ module uart_top_tb ();
     .rx_sec(rx_sec),
     .rx_ded(rx_ded),
     .tx_full(tx_full),
-    .rx_full(rx_full)
+    .rx_full(rx_full),
+    .tx_empty(tx_empty),
+    .rx_empty(rx_empty)
   );
 
   initial begin
@@ -44,7 +46,7 @@ module uart_top_tb ();
   task check;
     input [7:0] expected;
     begin
-      @(posedge uut.inst1.inst1.rx_ready);
+      @(posedge uut.inst2.rx_ready);
       @(posedge uut.clk_16x);
       @(posedge uut.clk_16x);
       #10;

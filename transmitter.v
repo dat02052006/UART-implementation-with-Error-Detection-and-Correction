@@ -1,9 +1,9 @@
 module transmitter (
   input clk_16x, reset, w_en, 
   input [7:0] data_in,
-  output data_out, full
+  output data_out, full, empty
 );
-  wire empty, done;
+  wire done;
   wire [7:0] fifo_out;
   wire [12:0] encoder_out;
   reg tx_ready;
