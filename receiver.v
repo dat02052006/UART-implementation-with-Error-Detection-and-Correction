@@ -36,7 +36,7 @@ module receiver (
       reg_sec <= 1'b0;
       reg_ded <= 1'b0;
     end
-    else if (rx_ready) begin
+    else if (done) begin
       reg_sec <= raw_sec;
       reg_ded <= raw_ded;
     end

@@ -8,7 +8,7 @@ module rx_fsm_tb ();
     .reset(reset),
     .data_in(in),
     .rx_frame(frame),
-    .ready(ready)
+    .done(done)
   );
   initial begin
     clk = 1'b0;
@@ -33,7 +33,11 @@ module rx_fsm_tb ();
     in = 1'b1;
     #10;  
     reset = 1'b0;
+    $display ("Frame received: 0_0100_1101_0110");
     write (13'b0_0100_1101_0110);
+    $display ("Received");
+    $display ("Frame received: 1_0100_0001_0100");
+    write (13'b1_0100_0001_0100);
     $display ("Received");
     #50000;
     $finish;
