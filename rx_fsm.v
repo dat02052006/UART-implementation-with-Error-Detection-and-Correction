@@ -1,7 +1,7 @@
 module rx_fsm (
   input clk_16x, reset, data_in,
   output [12:0] rx_frame,
-  output ready
+  output done
 );
   reg [3:0] tick_counter, bit_counter;
   wire voted_bit;
@@ -56,6 +56,6 @@ module rx_fsm (
       endcase
     end
   end
-  assign ready = (state == stop && tick_counter == 4'd15) ? 1'b1 : 1'b0;
+  assign done = (state == stop && tick_counter == 4'd15) ? 1'b1 : 1'b0;
   assign rx_frame = shift_reg;
 endmodule

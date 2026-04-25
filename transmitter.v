@@ -6,16 +6,16 @@ module transmitter (
   wire done;
   wire [7:0] fifo_out;
   wire [12:0] encoder_out;
-  reg tx_ready;
-  always @(posedge clk_16x or posedge reset) begin
+  reg fsm_start;
+  always @(posedge clk_16x or posedge reset) begin  // chay fsm khi co hang va tat khi chay xong
     if (reset) 
-      tx_ready <= 1'b0;
+      fsm_start <= 1'b0;
     else if (done) 
-      tx_ready <= 1'b0; 
+      fsm_start <= 1'b0; 
     else if (!empty) 
-      tx_ready <= 1'b1; 
+      fsm_start <= 1'b1; 
   end
-  wire fifo_read = (!empty) && (!tx_ready);
+  wire fifo_read = (!empty) && (!fsm_start);    // lay hang khi co hang va fsm trong
   queue inst0 (
     .clk(clk_16x), 
     .rs(reset),
@@ -33,7 +33,7 @@ module transmitter (
   tx_fsm inst2 (
     .clk_16x(clk_16x),
     .reset(reset),
-    .tx_start(tx_ready),
+    .tx_start(fsm_start),
     .data_in(encoder_out),
     .data_out(data_out),
     .done(done)

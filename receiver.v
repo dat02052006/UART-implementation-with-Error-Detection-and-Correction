@@ -4,7 +4,7 @@ module receiver (
   output [7:0] data_out
 );
   wire [12:0] rx_frame;
-  wire rx_ready;
+  wire done;
   wire [7:0] decoded;
   wire raw_sec, raw_ded;
   reg reg_sec, reg_ded;
@@ -13,7 +13,7 @@ module receiver (
     .reset(reset),
     .data_in(data_in),
     .rx_frame(rx_frame),
-    .ready(rx_ready)
+    .done(done)
   );
   hamming_decoder inst1 (
     .data_in(rx_frame),
@@ -24,7 +24,7 @@ module receiver (
   queue inst2 (
     .clk(clk_16x),
     .rs(reset),
-    .w_en(rx_ready),
+    .w_en(done),
     .r_en(r_en),
     .in(decoded),
     .out(data_out),
