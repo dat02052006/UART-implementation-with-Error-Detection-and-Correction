@@ -3,8 +3,8 @@ module uart_top (
   input [7:0] send_data,
   input send, receive,
   output [7:0] receive_data,
-  input rx_pin,
-  output tx_pin,
+  input rx_pin,                     // bit nhan
+  output tx_pin,                    // bit gui
   output rx_sec, rx_ded,
   output tx_full, rx_full, tx_empty, rx_empty
 );

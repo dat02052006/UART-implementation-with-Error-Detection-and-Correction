@@ -1,5 +1,5 @@
 module queue #(
-  parameter data_width =8, addr_width =4
+  parameter data_width = 8, addr_width = 4
 )( 
   input wire clk,rs,w_en,r_en,
   input wire [data_width-1:0] in,
