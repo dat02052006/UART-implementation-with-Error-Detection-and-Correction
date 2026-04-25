@@ -3,8 +3,8 @@ module rx_fsm (
   output [12:0] rx_frame,
   output done
 );
-  reg [3:0] tick_counter, bit_counter;
-  wire voted_bit;
+  reg [3:0] tick_counter, bit_counter;  // bo dem tick va so bit nhan duoc
+  wire voted_bit;                       // output cua oversampling filter
   oversampling_filter inst0 (
     .clk_16x(clk_16x),
     .reset(reset),
@@ -17,16 +17,16 @@ module rx_fsm (
   reg [12:0] shift_reg;
   always @(*) begin
     case (state)
-      idle: next_state = (!data_in) ? start : idle;
+      idle: next_state = (!data_in) ? start : idle; // start bit = 0 
       start: begin
-        if (tick_counter == 4'd7) next_state = (!data_in) ? data : idle;
+        if (tick_counter == 4'd7) next_state = (!data_in) ? data : idle;    // xac dinh dung start bit thi nhan hang
         else next_state = start;
       end
       data: begin
-        if (tick_counter == 4'd15) next_state = (bit_counter == 4'd12) ? stop : data;
+        if (tick_counter == 4'd15) next_state = (bit_counter == 4'd12) ? stop : data; // nhan lan luot tung bit
         else next_state = data;
       end
-      stop: next_state = (tick_counter == 4'd15) ? idle : stop;
+      stop: next_state = (tick_counter == 4'd15) ? idle : stop; // nhan xong thi dung
     endcase
   end
   always @(posedge clk_16x or posedge reset) begin
@@ -46,7 +46,7 @@ module rx_fsm (
         start: tick_counter <= (tick_counter == 4'd7)? 4'd0 : tick_counter + 1;
         data: begin
           if (tick_counter == 4'd15) begin
-            shift_reg <= {voted_bit, shift_reg[12:1]};
+            shift_reg <= {voted_bit, shift_reg[12:1]};  // dich vao tung bit nhan
             bit_counter <= bit_counter + 1;
             tick_counter <= 4'd0;
           end

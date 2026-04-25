@@ -10,4 +10,5 @@ module hamming_encoder (
   assign p[2] = d[1] ^ d[2] ^ d[3] ^ d[7];
   assign p[3] = d[4] ^ d[5] ^ d[6] ^ d[7];
   assign p_total = ^encoded_data[11:0];
+  // frame p0, p1, d0, p2, d1, d2, d3, p3, d4, d5, d6, d7, p_total 
 endmodule 
