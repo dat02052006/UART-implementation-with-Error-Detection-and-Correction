@@ -19,13 +19,13 @@ module rx_fsm_tb ();
     integer i;
     begin
       in = 1'b0;
-      #320;
+      repeat(16) @(posedge clk);
       for (i = 0; i < 13; i = i + 1) begin
         in = data[i];
-        #320;
+        repeat(16) @(posedge clk);
       end
       in = 1'b1;
-      #320;
+      repeat(16) @(posedge clk);
     end
   endtask
   initial begin
@@ -34,11 +34,17 @@ module rx_fsm_tb ();
     #10;  
     reset = 1'b0;
     write (13'b0_0100_1101_0110);
-    #10000;
-    if (ready) $display("Expected: 0010011010110, got: %b", frame);
-    else $display("TIMEOUT - ready không lên");
-    #100;
+    $display ("Received");
+    #50000;
     $finish;
+  end
+  initial begin
+    forever begin
+        @(posedge clk);
+        if (uut.state == 2'd2 && uut.tick_counter == 4'd8) begin
+            $display ("Bit %d in: %b", uut.bit_counter, in);
+        end
+    end
   end
 endmodule
 

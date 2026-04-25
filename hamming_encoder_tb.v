@@ -5,13 +5,12 @@ module hamming_encoder_tb ();
   hamming_encoder uut (.d(data), .encoded_data(encoded_data));
   initial begin
     $monitor ("Input: %b | Encoded: %b", data, encoded_data);
-    data = 8'b00000000;
+    data = 8'haa;
     #10;
-    data = 8'b11111111;
+    data = 8'hbb;
     #10;
-    data = 8'b01010101;
+    data = 8'hcc;
     #10;
-    data = 8'b11100101;
     $finish;
   end
 endmodule

@@ -35,3 +35,42 @@ Thumbs.db
 *.bak
 *.orig
 *~
+# ---4. Vivado ---
+# Thư mục chứa kết quả mô phỏng (rất nặng)
+*.sim/
+
+# Thư mục chứa kết quả Synthesis & Implementation
+*.runs/
+
+# Thư mục lưu cache của IP cores và Project (rất nặng)
+*.cache/
+
+# Thư mục file phụ trợ của IP
+*.ip_user_files/
+
+# Thư mục Hardware Manager 
+*.hw/
+
+# Thư mục tạm của hệ thống Xilinx
+.Xil/
+
+# ==========================================
+# LOGS & TEMPORARY FILES
+# ==========================================
+
+# Các file Nhật ký (Logs) và Journal
+*.jou
+*.log
+*.str
+
+# Các file dump và database tạm
+*.pb
+*.wdb
+*.dir/
+
+# Bỏ qua các file cấu hình backup tự động
+*.backup.*
+*~
+*.srcs
+*.xpr
+*.wcfg

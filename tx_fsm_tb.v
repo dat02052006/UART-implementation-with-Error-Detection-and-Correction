@@ -21,7 +21,7 @@ module tx_fsm_tb ();
     in = 13'd0;
     #10;
     reset = 1'b0;
-    #10;
+    #100;
     in = 13'b1_1110_0011_0001;
     start = 1'b1;
     #20;
@@ -30,5 +30,11 @@ module tx_fsm_tb ();
     $display ("Sent");
     #10;
     $finish;
+  end
+  initial begin
+    forever begin
+        @(posedge clk);
+        if (uut.state == 2'd2 && uut.tick_counter == 4'd8) $display ("Bit %d out: %b", uut.bit_counter, out);
+    end
   end
 endmodule

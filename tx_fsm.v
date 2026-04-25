@@ -35,7 +35,7 @@ module tx_fsm (
         end
         start: begin
           data_out <= 1'b0;
-          tick_counter <= tick_counter + 1'b1;
+          tick_counter <= (tick_counter == 4'd15) ? 4'd0 : tick_counter + 1'b1;
         end
         data: begin
           data_out <= shift_reg[0];
@@ -48,7 +48,7 @@ module tx_fsm (
         end
         stop: begin
           data_out <= 1'b1;
-          tick_counter <= tick_counter + 1'b1;
+          tick_counter <= (tick_counter == 4'd15) ? 4'd0 : tick_counter + 1'b1;
         end
       endcase
     end

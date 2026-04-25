@@ -1,7 +1,7 @@
 module uart_top (
   input clk, reset,
   input [7:0] send_data,
-  input send,
+  input send, receive,
   output [7:0] receive_data,
   input rx_pin,
   output tx_pin,
@@ -26,7 +26,7 @@ module uart_top (
   receiver inst2 (
     .clk_16x(clk_16x),
     .reset(reset),
-    .r_en(1'b1),
+    .r_en(receive),
     .data_in(rx_pin),
     .data_out(receive_data),
     .full(rx_full),

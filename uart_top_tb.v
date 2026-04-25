@@ -1,21 +1,19 @@
 `timescale 1ns/1ps
-
 module uart_top_tb ();
-  reg clk, reset, send;
+  reg clk, reset, send, receive;
   reg [7:0] send_data;
   wire [7:0] receive_data;
   wire tx_pin;
   wire rx_sec, rx_ded, tx_full, rx_full, tx_empty, rx_empty;
   wire rx_pin;
-  
   assign rx_pin = tx_pin; 
-  
   uart_top uut (
     .clk(clk),
     .reset(reset),
     .send_data(send_data),
     .send(send),
     .receive_data(receive_data),
+    .receive(receive),
     .rx_pin(rx_pin),
     .tx_pin(tx_pin),
     .rx_sec(rx_sec),
@@ -38,7 +36,6 @@ module uart_top_tb ();
       send = 1'b1;
       @(posedge uut.clk_16x);
       #10; 
-      
       send = 1'b0;
     end
   endtask
@@ -46,6 +43,7 @@ module uart_top_tb ();
   task check;
     input [7:0] expected;
     begin
+      receive = 1'b1;
       @(posedge uut.inst2.rx_ready);
       @(posedge uut.clk_16x);
       @(posedge uut.clk_16x);
@@ -54,6 +52,7 @@ module uart_top_tb ();
         $display ("PASS, sent: %h, got %h", expected, receive_data);
       else 
         $display ("FAIL, sent: %h, got %h", expected, receive_data);
+      receive = 1'b0;
     end
   endtask
 
@@ -61,7 +60,7 @@ module uart_top_tb ();
     reset = 1'b1;
     send = 1'b0;
     send_data = 8'd0;
-    
+    receive = 1'b0;
     #200;
     reset = 1'b0;
     #200; 
@@ -94,7 +93,9 @@ module uart_top_tb ();
     send_byte (8'h11);
     send_byte (8'h22);
     send_byte (8'h33);
-    if (tx_full) $display ("FIFO tx_full flag works");
+    if (tx_full) $display ("FIFO tx_full flag works, last byte sent: %h:", uut.inst1.fifo_out);
+    wait (rx_full == 1'b1);
+    if (rx_full) $display ("FIFO rx_full flag works, last byte received: %h", uut.inst2.decoded);
     #1000000; 
     $finish;
   end

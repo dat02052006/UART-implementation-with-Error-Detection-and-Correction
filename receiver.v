@@ -5,7 +5,7 @@ module receiver (
 );
   wire [12:0] rx_frame;
   wire rx_ready;
-  wire [7:0] encoded;
+  wire [7:0] decoded;
   wire raw_sec, raw_ded;
   reg reg_sec, reg_ded;
   rx_fsm inst0 (
@@ -17,7 +17,7 @@ module receiver (
   );
   hamming_decoder inst1 (
     .data_in(rx_frame),
-    .data_out(encoded),
+    .data_out(decoded),
     .error_sec(raw_sec),
     .error_ded(raw_ded)
   );
@@ -26,7 +26,7 @@ module receiver (
     .rs(reset),
     .w_en(rx_ready),
     .r_en(r_en),
-    .in(encoded),
+    .in(decoded),
     .out(data_out),
     .full(full),
     .empty(empty)
