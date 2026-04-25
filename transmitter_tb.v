@@ -19,65 +19,43 @@ module transmitter_tb ();
   task send;
     input [7:0] data;
     begin
+        @(negedge clk);
         in = data;
         en = 1'b1;
-        #10;
+        @(negedge clk);
         en = 1'b0;
     end
   endtask
-  reg [12:0] captured_data;
-  integer i;
-  task check;
-    input [7:0] raw_data;
-    reg [12:0] expected_data;
+  task check_fifo;
+    input [7:0] expected_fifo_out;
     begin
-        @(negedge out);
-        #10;
-        expected_data = uut.encoder_out;
-        repeat(8) @(posedge clk);
-        for (i = 0; i < 4'd13; i = i + 1) begin
-            repeat(16) @(posedge clk);
-            captured_data[i] = out;
-        end
-       repeat(16) @(posedge clk);
-       if (out != 1'b1) $display ("Error no stop bit");
-       if (captured_data == expected_data) $display ("Pass, send: %h, got: %h", expected_data, captured_data);
-       else $display ("Fail, send: %h, got: %h", expected_data, captured_data);
+        @(posedge clk);
+        @(posedge clk);
+        if (uut.fifo_out == expected_fifo_out) $display ("FIFO Pass, send: %h, fifo_out: %h", expected_fifo_out, uut.fifo_out);
+        else $display ("FIFO Fail, send: %h, fifo_out: %h", expected_fifo_out, uut.fifo_out);
     end
   endtask
   initial begin
     reset = 1'b1;
     en = 1'b0;
     in = 8'd0;
-    captured_data = 13'd0;
-    #10;
+    #100;
     reset = 1'b0;
     #100;
     send (8'haa);
-    @(posedge clk);
-    @(posedge clk);
-    check (8'haa);
+    check_fifo (8'haa);
+    $display ("Frame out: %b", uut.encoder_out);
+    wait (uut.done == 1'b1);
     send (8'hbb);
-    captured_data = 13'd0;
-    @(posedge clk);
-    @(posedge clk);
-    check (8'hbb);
-    send (8'hcc);
-    captured_data = 13'd0;
-    @(posedge clk);
-    @(posedge clk);
-    check (8'hcc);
-    send (8'hdd);
-    captured_data = 13'd0;
-    @(posedge clk);
-    @(posedge clk);
-    check (8'hdd);
-    send (8'hee);
-    captured_data = 13'd0;
-    @(posedge clk);
-    @(posedge clk);
-    check (8'hee);
+    check_fifo (8'hbb);
+    $display ("Frame out: %b", uut.encoder_out);
     #50000;
     $finish;
+  end
+  initial begin
+    forever begin
+        @(posedge clk);
+        if (uut.inst2.state == 2'd2 && uut.inst2.tick_counter == 4'd8) $display ("Bit out %d: %b", uut.inst2.bit_counter, out);
+    end
   end
 endmodule
