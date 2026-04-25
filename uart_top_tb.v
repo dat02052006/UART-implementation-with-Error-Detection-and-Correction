@@ -44,7 +44,7 @@ module uart_top_tb ();
     input [7:0] expected;
     begin
       receive = 1'b1;
-      @(posedge uut.inst2.rx_ready);
+      @(posedge uut.inst2.done);
       @(posedge uut.clk_16x);
       @(posedge uut.clk_16x);
       #10;
