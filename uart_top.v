@@ -1,5 +1,6 @@
 module uart_top (
   input clk, reset,
+  input [2:0] baud_rate_sel,
   input [7:0] send_data,
   input send, receive,
   output [7:0] receive_data,
@@ -12,6 +13,7 @@ module uart_top (
   baudrate_generator inst0 (
     .clk(clk),
     .reset(reset),
+    .baud_rate_sel(baud_rate_sel),
     .clk_16x(clk_16x)
   );
   transmitter inst1 (

@@ -49,7 +49,7 @@ module transmitter_tb ();
     send (8'hbb);
     check_fifo (8'hbb);
     $display ("Frame out: %b", uut.encoder_out);
-    #50000;
+    #10000;
     $finish;
   end
   initial begin
