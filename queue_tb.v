@@ -54,7 +54,7 @@ module queue_tb ();
     read;
     $display ("Expect: cc, got: %h", out);
     $display ("Expect empty, empty: %b", empty);
-    
+    #50;
     $finish;
   end
 endmodule
