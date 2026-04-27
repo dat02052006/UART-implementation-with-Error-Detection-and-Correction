@@ -1,6 +1,7 @@
 `timescale 1ns/1ps
 module uart_top_tb ();
   reg clk, reset, send, receive;
+  reg [2:0] baud_rate_sel;
   reg [7:0] send_data;
   wire [7:0] receive_data;
   wire tx_pin;
@@ -10,6 +11,7 @@ module uart_top_tb ();
   uart_top uut (
     .clk(clk),
     .reset(reset),
+    .baud_rate_sel(baud_rate_sel),
     .send_data(send_data),
     .send(send),
     .receive_data(receive_data),
@@ -29,7 +31,7 @@ module uart_top_tb ();
     forever #10 clk = ~clk; 
   end
 
-  task send_byte;
+  task send_byte;                   // task gui du lieu
     input [7:0] data;
     begin
       send_data = data;
@@ -40,7 +42,7 @@ module uart_top_tb ();
     end
   endtask
 
-  task check;
+  task check;                     // task kiem tra
     input [7:0] expected;
     begin
       receive = 1'b1;
@@ -57,6 +59,7 @@ module uart_top_tb ();
   endtask
 
   initial begin
+    baud_rate_sel = 3'b000;       // su dung baud rate 115200
     reset = 1'b1;
     send = 1'b0;
     send_data = 8'd0;
@@ -74,7 +77,7 @@ module uart_top_tb ();
     send_byte (8'hcc);
     check (8'hcc);
     
-    // Test FIFO burst
+    // Test FIFO 
     send_byte (8'h11);
     send_byte (8'h22);
     send_byte (8'h33);
@@ -96,7 +99,7 @@ module uart_top_tb ();
     if (tx_full) $display ("FIFO tx_full flag works, last byte sent: %h:", uut.inst1.fifo_out);
     wait (rx_full == 1'b1);
     if (rx_full) $display ("FIFO rx_full flag works, last byte received: %h", uut.inst2.decoded);
-    #1000000; 
+    #10; 
     $finish;
   end
 endmodule
